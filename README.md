@@ -65,7 +65,9 @@
 - **参考内容**：
     - 调试与日志：在 02_CustomAlgorithm/DebugAndLogs 目录下，查阅调试方法和日志查看指南，帮助您快速定位部署中的问题。
   
-  
+# FAQ
+提供自定义算法包开发与调试过程中的常见问题，如开发中存疑，可从[FAQ](./docs/FAQ.md)文档中查找答案。
+
 # 📬 联系方式
 - 🌐 官网：https://www.aidrive-tech.com
 - 📧 邮箱：support@aidrive-tech.com
