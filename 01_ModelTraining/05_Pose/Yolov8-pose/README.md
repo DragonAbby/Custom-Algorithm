@@ -32,6 +32,6 @@
    其中：
 
    - onnx_model_path：训练后导出的onnx模型文件位置
-   - platform：[rk3568,rk3588]
+   - platform：rk3588
    - fp：fp代表不量化
    - output_rknn_path：转换后模型的保存路径

@@ -151,7 +151,7 @@ name = exp
    其中：
 
    - onnx_model_path：训练后导出的onnx模型文件位置
-   - platform：[rk3568,rk3588]
+   - platform：rk3588
    - i8/fp：i8代表使用图片量化；fp代表不量化
    - output_rknn_path：量化后模型的保存路径
 
