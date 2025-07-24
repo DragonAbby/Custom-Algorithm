@@ -93,31 +93,50 @@
    ```
 注意：batch-size根据显存情况调整。
 
-## 模型导出
+## 模型路径
+训练后模型保存路径由`train.py`中`project`参数和`name`参数指定。
+默认值：
+```
+project = runs/train
+name = exp
+```
+若使用默认值，模型保存在`runs/train`文件夹下，以`exp`命名。
+若多次运行，会生成`exp`、`exp2`、`exp3`等文件夹，选择训练成功的模型文件`best.pt` 。
 
+## 模型导出
 1. ONNX导出
 
    ```
    python export_rk.py --weights xxx.pt --include onnx --simplify --opset 12 --rknpu rk3588
    ```
+导出过程如下图：
+![](../../../docs/assets/export_onnx.png)
+
+- 记录模型的anchors
+   - 通用anchors: [[10, 13], [16, 30], [33, 23], [30, 61], [62, 45], [59, 119], [116, 90], [156, 198], [373, 326]]
+   - 若打印的anchors与通用anchors不同，此处需记录anchors值，在制作算法包时修改配置文件。
+- onnx模型的生成路径
+
 
 ## 模型量化
-**注意**：该操作适用于KS968产品，KS988无需执行。
+**注意**：该操作适用于ks968产品，ks988无需执行。
 
-1. 在训练集中随机选取图片进行模型量化，精度校准，数量在80-120之间，目录结构如下：
+1. [**环境安装**](../../README.md)
+
+2. 在训练集中随机选取图片进行模型量化，精度校准，数量在80-120之间，目录结构如下：
 
    ```
     images:
     	xxx.jpg
    ```
 
-2. 把图片路径保存至xxx.txt
+3. 把图片路径保存至xxx.txt
 
    ```
     find ./images/ -name "*.jpg">custom.txt
    ```
 
-3. 模型量化
+4. 模型量化
 
    修改convert.py：
 

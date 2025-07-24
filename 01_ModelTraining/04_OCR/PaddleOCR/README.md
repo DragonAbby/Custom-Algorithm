@@ -150,9 +150,11 @@ Rec训练：
    ```
 
 ## 模型转换
-**注意**：该操作适用于KS968产品，KS988无需执行。
+**注意**：该操作适用于ks968产品，ks988无需执行。
 
-- 检测模型转RKNN：
+1. [**环境安装**](../../README.md)
+
+2. 检测模型转RKNN：
 
    ```bash 
    cd convert_rknn/det
@@ -161,7 +163,7 @@ Rec训练：
    # 输出文件保存为: ../model/ppocrv4_det.rknn
    ```
 
-- 识别模型转RKNN：
+3. 识别模型转RKNN：
 
    ```
    cd convert_rknn/rec
