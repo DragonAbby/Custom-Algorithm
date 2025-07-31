@@ -60,13 +60,13 @@
 1. 单卡训练
 
    ```
-    python segment/train.py --model yolov5s-seg.pt --data data/custom.yaml --epochs 300 --img 640 --batch-size 128
+    python segment/train.py --weights yolov5s-seg.pt --data data/custom.yaml --epochs 300 --img 640 --batch-size 128
    ```
 
 2. 推荐使用多卡训练
 
    ```python
-    python -m torch.distributed.run --nproc_per_node 4 --master_port 1 segment/train.py --model yolov5s-seg.pt --data data/custom.yaml --epochs 300 --img 640 --device 0,1,2,3
+    python -m torch.distributed.run --nproc_per_node 4 --master_port 1 segment/train.py --weights yolov5s-seg.pt --data data/custom.yaml --epochs 300 --img 640 --device 0,1,2,3
    ```
 
 ## 模型导出
@@ -74,7 +74,7 @@
 1. ONNX导出
 
    ```
-   python export.py --weights xxx.py --include onnx --simplify --opset 12
+   python export.py --weights xxx.pt --include onnx --simplify --opset 12
    ```
 
 ## 模型转换

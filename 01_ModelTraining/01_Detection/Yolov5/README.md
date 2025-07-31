@@ -7,6 +7,17 @@
    ```
    git clone https://github.com/AIDrive-Research/Custom-Algorithm.git
    cd Custom-Algorithm/01_ModelTraining/01_Detection/Yolov5  
+   ```
+
+2. 根据cuda版本安装pytorch-v2.5.1  
+   参考：https://pytorch.org/get-started/previous-versions/  
+   以cuda 11.8为例：
+   ```
+   pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu118 
+   ```
+
+3. 安装依赖
+   ```
    pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/
    ```
 
