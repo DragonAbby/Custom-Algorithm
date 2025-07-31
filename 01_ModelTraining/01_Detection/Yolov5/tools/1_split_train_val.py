@@ -25,8 +25,8 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--input-images', default='voc/JPEGImages/')
-    parser.add_argument('--input-labels', default='yolo/labels_temp/')
-    parser.add_argument('--output', default='yolo/')
+    parser.add_argument('--input-images', default='/data6/shujuji/hot_work/JPEGImages/')
+    parser.add_argument('--input-labels', default='/data6/shujuji/hot_work/yolo/labels_temp/')
+    parser.add_argument('--output', default='/data6/shujuji/hot_work/yolo/')
     args = parser.parse_args()
     main(args)

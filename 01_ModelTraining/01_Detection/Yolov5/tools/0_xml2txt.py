@@ -2,10 +2,10 @@ import os
 import xml.etree.ElementTree as ET
 import traceback
 
-CLASSES = ['stone']
-XML_DIR = '/data8/user/shanpengfei/EdgeAI-Engine-main/train/object-detection/data/dataset/stone/voc/Annotations'
-JPEG_DIR = '/data8/user/shanpengfei/EdgeAI-Engine-main/train/object-detection/data/dataset/stone/voc/JPEGImages'
-LABEL_DIR = '/data8/user/shanpengfei/EdgeAI-Engine-main/train/object-detection/data/dataset/stone/yolo/labels_temp'
+CLASSES = ['high_temperature_sign']
+XML_DIR = '/data6/shujuji/hot_work/Annotations'
+JPEG_DIR = '/data6/shujuji/hot_work/JPEGImages'
+LABEL_DIR = '/data6/shujuji/hot_work/yolo/labels_temp'
 
 
 def parse_xml(fname):
