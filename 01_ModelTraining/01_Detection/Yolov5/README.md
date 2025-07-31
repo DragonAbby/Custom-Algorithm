@@ -2,16 +2,14 @@
 
 ## 环境安装
 
-1. Clone repo and install [requirements.txt](requirements.txt) in a python=3.8.0 environment, including pytorch>=1.8
-
+1. Clone repo and install [requirements.txt](requirements.txt) in a python=3.10 environment
    ```
    git clone https://github.com/AIDrive-Research/Custom-Algorithm.git
    cd Custom-Algorithm/01_ModelTraining/01_Detection/Yolov5  
    ```
 
-2. 根据cuda版本安装pytorch-v2.5.1  
-   参考：https://pytorch.org/get-started/previous-versions/  
-   以cuda 11.8为例：
+2. 根据 `cuda` 版本安装 [`Pytorch-v2.5.1`](https://pytorch.org/get-started/previous-versions/)  
+   以 `cuda 11.8` 为例：
    ```
    pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu118 
    ```
