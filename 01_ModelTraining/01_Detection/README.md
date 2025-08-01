@@ -5,6 +5,8 @@
 
 ## 参考样例
 - Yolov5
+- Yolov8
+- Yolov11
 
 
 

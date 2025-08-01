@@ -5,3 +5,5 @@
 
 ## 参考样例
 - Yolov5-seg
+- Yolov8-seg
+- Yolov11-seg

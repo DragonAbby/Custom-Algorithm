@@ -75,7 +75,7 @@
 
    - path: YOLO数据集存储路径, 如：output/yolo
    - train: images/train
-   - val: image/val
+   - val: images/val
    - nc: 类别数目
    - names: 类别名称，此处与2中CLASSES相同
 
