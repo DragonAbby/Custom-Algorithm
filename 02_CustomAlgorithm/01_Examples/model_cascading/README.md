@@ -43,7 +43,7 @@ git clone https://github.com/AIDrive-Research/Custom-Algorithm.git
 
 以**明火检测算法**为例进行说明。算法使用`yolov5`检测明火目标，使用`resnet18`对目标二次分类。
 
-**模型A：**目标检测推理代码`detect.py`如下。
+**模型A**：目标检测推理代码`detect.py`如下。
 
 ```python
 import cv2
@@ -222,7 +222,7 @@ class Model(RknnModel):
 
 
 
-**模型B：**分类推理`classify`推理代码如下。
+**模型B**：分类推理`classify`推理代码如下。
 
 ```python
 import numpy as np

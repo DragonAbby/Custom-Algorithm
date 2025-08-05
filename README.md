@@ -33,6 +33,9 @@
 - [03_PackageStructure](./02_CustomAlgorithm/03_PackageStructure): 算法包详解
     - 结构样例：展示如何组织算法包的文件结构，便于理解和定制。
     - 参数详解：详细说明算法包中的配置参数，便于自定义调整。
+- [04_DebugAndLogs](./02_CustomAlgorithm/04_DebugAndLogs): 
+    - 调试方法
+    - 日志查看
 
 ### Tools
 该目录提供了自定义算法过程中用到的工具和部分依赖文件。

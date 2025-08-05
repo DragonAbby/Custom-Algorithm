@@ -1,4 +1,4 @@
-# Yolov11
+# Yolov8-seg
 
 ## 环境安装
 
