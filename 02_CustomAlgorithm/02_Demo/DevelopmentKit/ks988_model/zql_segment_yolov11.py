@@ -2,11 +2,11 @@ import cv2
 import numpy as np
 
 from logger import LOGGER
-from model import RknnModel
+from model import OnnxModel
 from utils.image_utils import opencv_to_bytes
 
 
-class Model(RknnModel):
+class Model(OnnxModel):
     default_args = {
         'max_wh': 7680,  # maximum box width and height
         'max_nms': 30000,  # maximum number of boxes
@@ -77,7 +77,6 @@ class Model(RknnModel):
             return False
         return True
     
-    '''-----------------------------------------yolov11_seg_post_process----------------------------------------'''
     def __dfl(self, position):
         # Distribution Focal Loss (DFL) - NumPy version
         x = np.array(position)
@@ -97,16 +96,14 @@ class Model(RknnModel):
         """Filter boxes with object threshold.
         """
         box_confidences = box_confidences.reshape(-1)
+        candidate, class_num = box_class_probs.shape
         class_max_score = np.max(box_class_probs, axis=-1)
         classes = np.argmax(box_class_probs, axis=-1)
-
         _class_pos = np.where(class_max_score * box_confidences >= self.conf_thres)
         scores = (class_max_score * box_confidences)[_class_pos]
-
         boxes = boxes[_class_pos]
         classes = classes[_class_pos]
         seg_part = (seg_part * box_confidences.reshape(-1, 1))[_class_pos]
-
         return boxes, classes, scores, seg_part
 
     def __box_process(self, position, shape):
@@ -139,22 +136,28 @@ class Model(RknnModel):
             classes_conf.append(input_data[pair_per_branch*i+1])
             scores.append(np.ones_like(input_data[pair_per_branch*i+1][:,:1,:,:], dtype=np.float32))
             seg_part.append(input_data[pair_per_branch*i+3])
-
+        
         def sp_flatten(_in):
             ch = _in.shape[1]
             _in = _in.transpose(0,2,3,1)
             return _in.reshape(-1, ch)
+        
+        boxes = [sp_flatten(_v) for _v in boxes]
+        classes_conf = [sp_flatten(_v) for _v in classes_conf]
+        scores = [sp_flatten(_v) for _v in scores]
+        seg_part = [sp_flatten(_v) for _v in seg_part]
 
-        boxes = np.concatenate([sp_flatten(_v) for _v in boxes])
-        classes_conf = np.concatenate([sp_flatten(_v) for _v in classes_conf])
-        scores = np.concatenate([sp_flatten(_v) for _v in scores])
-        seg_part = np.concatenate([sp_flatten(_v) for _v in seg_part])
+        boxes = np.concatenate(boxes)
+        classes_conf = np.concatenate(classes_conf)
+        scores = np.concatenate(scores)
+        seg_part = np.concatenate(seg_part)
 
         # 根据阈值过滤
         boxes, classes, scores, seg_part = self.__filter_boxes(boxes, scores, classes_conf, seg_part)
         zipped = zip(boxes, classes, scores, seg_part)
         sort_zipped = sorted(zipped, key=lambda x: (x[2]), reverse=True)
         result = zip(*sort_zipped)
+
         n = boxes.shape[0]  # number of boxes
         if not n:
             return None, None, None, None
@@ -177,7 +180,7 @@ class Model(RknnModel):
         classes = np.concatenate(nclasses)
         scores = np.concatenate(nscores)
         seg_part = np.concatenate(nseg_part)
-        
+
         nmasks = self.__process_mask(proto_backup[0], seg_part, boxes, (self.img_size, self.img_size), upsample=True)
         nmasks = (nmasks * 255).astype(np.uint8)
         return nboxes[0], nclasses[0], nscores[0], nmasks
@@ -202,8 +205,7 @@ class Model(RknnModel):
                     else:
                         image = cv2.resize(image, (self.img_size, int(raw_height * scale)))
                 image, dw, dh = self._letterbox(image, (self.img_size, self.img_size))
-                image = np.expand_dims(image, axis=0)
-                outputs = self._rknn_infer('model', [image])
+                outputs = self._onnx_infer('model', image)
                 boxes, classes, scores, masks = self.__post_process(outputs)
                 if boxes is not None:
                     for i, box in enumerate(boxes):

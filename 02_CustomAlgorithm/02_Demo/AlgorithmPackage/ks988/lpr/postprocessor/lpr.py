@@ -23,6 +23,7 @@ class Postprocessor(BasePostprocessor):
             'infer_image': mat_to_bytes(draw_image),
             'draw_image': None,
             'reserved_data': {
+                'alg_name': self.alg_name,
                 'specified_model': [self.model_name],
                 'unsort': True
             }

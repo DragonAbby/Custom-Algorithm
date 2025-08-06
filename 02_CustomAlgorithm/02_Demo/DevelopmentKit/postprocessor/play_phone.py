@@ -63,6 +63,7 @@ class Postprocessor(BasePostprocessor):
                 'infer_image': mat_to_bytes(cropped_image),
                 'draw_image': None,
                 'reserved_data': {
+                    'alg_name': self.alg_name,
                     'specified_model': [self.play_phone_model_name],
                     'xyxy': expand_box,
                     'unsort': True

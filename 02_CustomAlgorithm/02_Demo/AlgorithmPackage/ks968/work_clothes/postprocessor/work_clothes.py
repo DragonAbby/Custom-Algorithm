@@ -47,6 +47,7 @@ class Postprocessor(BasePostprocessor):
                 'infer_image': mat_to_bytes(cropped_image),
                 'draw_image': None,
                 'reserved_data': {
+                    'alg_name': self.alg_name,
                     'specified_model': [self.workclothes_model_name],
                     'xyxy': xyxy,
                     'unsort': True
