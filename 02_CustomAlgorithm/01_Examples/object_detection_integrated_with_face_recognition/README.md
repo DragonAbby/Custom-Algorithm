@@ -35,7 +35,7 @@ git clone https://github.com/AIDrive-Research/Custom-Algorithm.git
 
 ![](../../../docs/assets/quick_start_3.png)
 
-## 3. 代码调试
+## 4. 代码调试
 
 - 在下图所示红色框内，连续点击7次，打开开发者模式
 

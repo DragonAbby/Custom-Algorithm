@@ -8,8 +8,8 @@ git clone https://github.com/AIDrive-Research/Custom-Algorithm.git
 
 下载示例算法包，并在示例算法包上修改。
 
-- 如果产品型号为ks968，则在ks968下的[fog](../../02_Demo/AlgorithmPackage/ks968/fog)算法包上修改。
-- 如果产品型号为ks988，则在ks988下的[fog](../../02_Demo/AlgorithmPackage/ks988/fog)算法包上修改。
+- 如果产品型号为ks968，则在ks968下的[fog](./ks968/fog)算法包上修改。
+- 如果产品型号为ks988，则在ks988下的[fog](./ks988/fog)算法包上修改。
 
 产品型号查看，产品型号在【系统设置】-【设备升级】中可查看。
 
@@ -17,11 +17,9 @@ git clone https://github.com/AIDrive-Research/Custom-Algorithm.git
 
 **本文以ks968算法包制作为例。**
 
-## 2. 模型训练
-
-参考分类模型训练[文档](../../../01_ModelTraining/02_Classification/Resnet18/README.md)，训练模型。
-
-注：经过模型训练，需导出onnx格式权重，量化完成后得到rknn模型。
+## 2. 算法逻辑
+- 若未标记检测区域，使用全图做分类；
+- 若标记了检测区域，将区域裁剪，做分类。
 
 ## 3. 推理代码编写
 

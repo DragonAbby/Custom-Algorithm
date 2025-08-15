@@ -8,8 +8,8 @@ git clone https://github.com/AIDrive-Research/Custom-Algorithm.git
 
 下载示例算法包，并在示例算法包上修改。
 
-- 如果产品型号为ks968，则在ks968下的[fire](../../02_Demo/AlgorithmPackage/ks968/fire)算法包上修改。
-- 如果产品型号为ks988，则在ks988下的[fire](../../02_Demo/AlgorithmPackage/ks988/fire)算法包上修改。
+- 如果产品型号为ks968，则在ks968下的[fire](./ks968/fire)算法包上修改。
+- 如果产品型号为ks988，则在ks988下的[fire](./ks988/fire)算法包上修改。
 
 产品型号查看，产品型号在【系统设置】-【设备升级】中可查看。
 
@@ -17,12 +17,10 @@ git clone https://github.com/AIDrive-Research/Custom-Algorithm.git
 
 **本文以ks968算法包制作为例。**
 
-## 2. 模型训练
-
-- 标准模型训练：[01_ModelTraining](../../../01_ModelTraining)中，提供了5大类5种模型训练方法。
-- 自有模型训练：根据自有代码训练模型。
-
-注：经模型训练，导出onnx格式权重，模型量化, 量化完成后得到rknn模型。
+## 2. 算法逻辑
+- 检测模型检测火焰；
+- 将检测出的区域裁剪，送入分类器做二次判定；
+- 根据分类结果判定。
 
 ## 3. 推理代码编写
 

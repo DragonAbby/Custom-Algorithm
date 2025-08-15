@@ -8,8 +8,8 @@ git clone https://github.com/AIDrive-Research/Custom-Algorithm.git
 
 下载示例算法包，并在示例算法包上修改。
 
-- 如果产品型号为ks968，则在ks968下的[person_intrusion](../../02_Demo/AlgorithmPackage/ks968/person_intrusion)算法包上修改。
-- 如果产品型号为ks988，则在ks988下的[person_intruson](../../02_Demo/AlgorithmPackage/ks988/person_intrusion)算法包上修改。
+- 如果产品型号为ks968，则在ks968下的[person_intrusion](./ks968/person_intrusion)算法包上修改。
+- 如果产品型号为ks988，则在ks988下的[person_intruson](./ks988/person_intrusion)算法包上修改。
 
 产品型号查看，产品型号在【系统设置】-【设备升级】中可查看。
 
@@ -17,9 +17,9 @@ git clone https://github.com/AIDrive-Research/Custom-Algorithm.git
 
 **本文以ks968算法包制作为例。**
 
-### 2. 模型训练
-
-模型训练参照yolov5训练[文档](../../../01_ModelTraining/01_Detection/Yolov5/README.md)，训练完成后导出onnx模型并量化，量化完成后得到rknn模型。
+## 2. 算法逻辑
+- 界面需画检测区域；
+- 人体检测， 在区域内产生告警。
 
 ## 3. 推理代码编写
 
